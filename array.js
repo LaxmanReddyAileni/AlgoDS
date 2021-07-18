@@ -11,7 +11,7 @@ var days = [
 var temp = [70, 69, 68, 75, 78, 66, 61];
 
 for (var i = 0; i < days.length; i++) {
-  // console.log("Temparature on " + days[i] + " was: " + temp[i]);
+  // console.log("Temparature onn " + days[i] + " was: " + temp[i]);
 }
 
 let lowest = temp[0];
