@@ -78,6 +78,15 @@ class BST {
     return this.breadthFirstSearchR(queue, list);
   }
 
+  DFSInorder() {
+    return traverseInOrder(this.root, []);
+  }
+  DFSPreorder() {
+    return traversePreOrder(this.root, []);
+  }
+  DFSPostorder() {
+    return traversePostOrder(this.root, []);
+  }
   lookup(value) {
     if (!this.root) {
       //root is empty return false
@@ -97,6 +106,46 @@ class BST {
   }
 }
 
+const traverseInOrder = (node, list) => {
+  // console.log(node.value);
+  if (node.left) {
+    traverseInOrder(node.left, list);
+  }
+  list.push(node.value);
+  if (node.right) {
+    traverseInOrder(node.right, list);
+  }
+  return list;
+};
+
+const traversePreOrder = (node, list) => {
+  //console.log(node.value);
+  list.push(node.value);
+
+  if (node.left) {
+    traversePreOrder(node.left, list);
+  }
+
+  if (node.right) {
+    traversePreOrder(node.right, list);
+  }
+  return list;
+};
+
+const traversePostOrder = (node, list) => {
+  //console.log(node.value);
+
+  if (node.left) {
+    traversePostOrder(node.left, list);
+  }
+
+  if (node.right) {
+    traversePostOrder(node.right, list);
+  }
+  list.push(node.value);
+  return list;
+};
+
 function traverse(node) {
   const tree = { value: node.value };
   tree.left = node.left === null ? null : traverse(node.left);
@@ -110,8 +159,12 @@ tree.insert(6);
 tree.insert(20);
 tree.insert(170);
 tree.insert(15);
-tree.insert(1);
-tree.breadthFirstSearch();
+tree.insert(1); 
+// tree.breadthFirstSearch();
 
-//JSON.stringify(traverse());
-console.log(tree.breadthFirstSearchR([tree.root], []));
+// //JSON.stringify(traverse());
+// console.log(tree.breadthFirstSearchR([tree.root], []));
+
+console.log(tree.DFSInorder([tree.root], []));
+console.log(tree.DFSPreorder([tree.root], []));
+console.log(tree.DFSPostorder([tree.root], []));
