@@ -153,3 +153,55 @@ var xorOperation = function (n, start) {
 };
 
 //console.log(xorOperation(10, 5));//2
+
+//reduce functionality
+
+// var ar = () => {
+//   let array = [1, 2, 3, 4];
+
+//   let fun = (a, b) => a * b;
+//   console.log(array.reduce(fun));
+//   console.log(array.reduce(fun, 5));
+// };
+// ar();
+
+var myPow = function (x, n) {
+  let map = {};
+  let result = x;
+  console.log(Math.pow(-34.00515, -3));
+  for (let i = 0; i < Math.abs(n); i++) {
+    if (n < 0) {
+      if (map[x]) {
+        result = (1 / x) * map[x];
+      } else {
+        map[x] = 1 / x;
+      }
+    } else if (n > 0) {
+      if (map[x]) {
+        result = result * map[x];
+        console.log("Result " + result);
+      } else {
+        map[x] = x;
+      }
+    } else {
+      result = 1;
+    }
+  }
+  return result;
+};
+
+// console.log(myPow(34.00515, -3));
+
+
+const promises = [3, 2, 1].map(
+  (d) =>
+    new Promise((reesolve) => {
+      setTimeout(() => {
+        reesolve(d);
+      }, d * 1000);
+    })
+);
+
+Promise.race(promises).then((val) => {
+  console.log(val);
+});
